@@ -2,10 +2,29 @@ const parentDiv = document.querySelector('.grid');
 let div;
 let div_out;
 const sidepanel = document.querySelector('.sidepanel');
+const rules = document.querySelector('.rules');
 
 const firstDiv = document.createElement('div');
 const secondDiv = document.createElement('div');
 const input = document.createElement('input');
+
+function createRules(){
+    let divh = document.createElement('div');
+    rules.appendChild(divh);
+    divh.innerHTML="Welcome to Etch-a-Sketch! Here are the rules to help you get started:";
+    let divl = document.createElement('ul');
+    rules.appendChild(divl);
+    divl.innerHTML+="<li>Click on the <strong>Basic</strong> option to sketch with black color.";
+    divl.innerHTML+="<li>Click on the <strong>Rainbow</strong> option to sketch with any random color.</li>";
+    divl.innerHTML+="<li>Click on the <strong>Erase</strong> option to clear the sketch.</li></ul>";
+    let divf = document.createElement('div');
+    rules.appendChild(divf);
+    divf.innerHTML="By default, the sketch has a 10x10 grid.";
+    divf.innerHTML+="If you want to change the grid size, you can do so by entering the desired number of squares in the "; 
+    divf.innerHTML+="<strong>Enter the number of squares:</strong> input and a grid of that size will be created. "; 
+    divf.innerHTML+="This allows you to adjust the size of the grid to suit your needs. "
+    divf.innerHTML+="We hope you have fun exploring Etch-a-Sketch. Happy sketching!"
+}
 
 function createSidePanel() {
     sidepanel.appendChild(firstDiv);
@@ -18,6 +37,10 @@ function createSidePanel() {
 
 
 function createFirstDiv() {
+    let option = document.createElement('div');
+    firstDiv.appendChild(option);
+    option.classList.add("option");
+    option.innerHTML="<p>Choose an Option</p>";
     button1 = document.createElement('button');
     firstDiv.appendChild(button1);
     button1.classList.add("basic");
@@ -33,16 +56,21 @@ function createFirstDiv() {
 }
 
 
-
 function createSecondDiv() {
-    secondDiv.innerHTML = "<p>Enter the number of squares</p>";
+    secondDiv.innerHTML = "<p>Enter the number of squares:</p>";
     secondDiv.appendChild(input);
     input.type = "text";
+    input.placeholder="Value between 1 to 200";
     input.classList.add('value');
     input.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-            removeGrid();
-            createGrid(input.value);
+            if(1<=Number(input.value) && Number(input.value)<=200){
+                removeGrid();
+                createGrid(input.value);
+            }
+            else{
+                alert("ERROR! Enter value should be between 1 to 200")
+            }
         }
     });
 }
@@ -70,7 +98,7 @@ function createGrid(size) {
     type(divs);
 }
 
-
+createRules();
 createSidePanel();
 createGrid(10);
 

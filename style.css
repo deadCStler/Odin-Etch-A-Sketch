@@ -34,9 +34,17 @@ body{
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    /* gap: 50px; */
-    margin: 20px;
+    margin: 20px 50px;
     flex-wrap: wrap;
+}
+
+.rules{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 400px;
+    text-align: justify;
+    font-family: 'Roboto', sans-serif;
 }
 
 .sidepanel{
@@ -48,7 +56,7 @@ body{
 
 .firstDiv{
     width: 300px;
-    height: 200px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,12 +66,16 @@ body{
 
 .secondDiv{
     width: 300px;
-    height: 200px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 5px;
+}
+
+.option{
+    text-align: center;
 }
 
 button{
@@ -81,6 +93,8 @@ button:hover {
 p{
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
+    width: 180px;
+    margin-top: 0;
 }
 
 
